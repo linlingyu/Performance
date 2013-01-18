@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<ul>
+    <li><a href=''>有关样式</a></li>
+    <li><a href=''>有关核心</a></li>
+    <li><a href=''>查看全部</a></li>
+</ul>
+</body>
+<script type="text/javascript">
+void function(){
+    var array = ['<ul>'],
+        data = [
+            '有关样式',
+            '有关核心',
+            '文档操作、控制',
+            'html/text/value操作',
+            '位置、范围',
+            '基础事件',
+            '属性',
+            '筛选',
+            '数据类型判断',//type
+            '网络传输',//ajax
+            '常用静态方法',//extend, merge, makeArray
+            '回调对象',//
+            '延迟对象'//
+        ];
+    for(var i = 0, item; item = data[i]; i++){
+        array.push('<li><a href="html/main.html?case=', i, '">', item, '</a></li>');
+    }
+    array.push('<li><a href="html/main.html">查看全部</a></li></ul>');
+    document.body.innerHTML = array.join('');
+}();
+</script>
+</html>
