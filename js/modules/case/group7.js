@@ -1,4 +1,6 @@
 define(function(require, exports, module){
+
+    //暴露全局变量，为了在控制台调试
     baidu = require('../../libs/tangram');
     $ = require('../../libs/jquery');
 
