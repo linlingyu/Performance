@@ -164,5 +164,96 @@ define(function(require, exports, module){
             div = null;
         }
     });
+
+	group.addItem({
+        ident: 'jQuery.data()',
+        des: '设置 DOM 对象上存储数据',
+		onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = $('fieldset');
+        },
+        run: function(){
+            this.ele.data('name','testDate');
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.data()',
+        des: '设置 DOM 对象上存储数据',
+		onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = baidu('fieldset');
+        },
+        run: function(){
+            this.ele.data('name','testDate');
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.data()',
+        des: '设置 DOM 对象上存储数据',
+		onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = $('fieldset');
+        },
+        run: function(){
+            this.ele.data('name');
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.data()',
+        des: '取出在 DOM 对象上存储数据',
+		onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = baidu('fieldset');
+        },
+        run: function(){
+            this.ele.data('name');
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.removeData()',
+        des: '取出在 DOM 对象上存储数据',
+		onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = $('fieldset' ).data('name','testDate');
+        },
+        run: function(){
+            this.ele.removeData('name');
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.removeData()',
+        des: '取出在 DOM 对象上存储数据',
+		onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = baidu('fieldset' ).data('name','testDate');
+        },
+        run: function(){
+            this.ele.removeData('name');
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
     return group;
 });

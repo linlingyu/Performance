@@ -60,6 +60,282 @@ define(function(require, exports, module){
             ele = null;
         }
     });
+
+	group.addItem({
+        ident: 'jQuery.trigger()',
+        des: '触发事件默认行为',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div'),
+				element = me.ele = $(box);
+            document.body.appendChild(box);
+			element.on('click', handler);
+        },
+        run: function(){
+	        this.ele.trigger('click');
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.trigger()',
+        des: '触发事件默认行为',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div'),
+				element = me.ele = baidu(box);
+            document.body.appendChild(box);
+			element.on('click', handler);
+        },
+        run: function(){
+	        this.ele.trigger('click');
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.mouseenter()',
+        des: '鼠标指针穿过元素时触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = $('fieldset table');
+        },
+        run: function(){
+	        this.ele.mouseenter(handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.mouseenter()',
+        des: '鼠标指针穿过元素时触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = baidu('fieldset table');
+        },
+        run: function(){
+	        this.ele.mouseenter(handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.mouseleave()',
+        des: '鼠标指针离开元素时触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = $('fieldset table');
+        },
+        run: function(){
+	        this.ele.mouseleave(handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.mouseleave()',
+        des: '鼠标指针离开元素时触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = baidu('fieldset table');
+        },
+        run: function(){
+	        this.ele.mouseleave(handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.delegate()',
+        des: '添加事件代理',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = $('fieldset');
+        },
+        run: function(){
+	        this.ele.delegate('table', 'mouseover', handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.delegate()',
+        des: '添加事件代理',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = baidu('fieldset');
+        },
+        run: function(){
+	        this.ele.delegate('table', 'mouseover', handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.undelegate()',
+        des: '卸载事件代理',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = $('fieldset');
+        },
+        run: function(){
+	        this.ele.undelegate('table', 'mouseover', handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.undelegate()',
+        des: '卸载事件代理',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target;
+			me.ele = baidu('fieldset');
+        },
+        run: function(){
+	        this.ele.undelegate('table', 'mouseover', handler);
+        },
+
+        onafterend: function(evt){
+	        evt.target.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'jQuery.focusin()',
+        des: '元素获得焦点时，触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+			box.innerHTML = '<input type="text" value="name">';
+			$(box).focusin(handler);
+	        me.ele = $('input',box).get(0);
+        },
+        run: function(){
+	        this.ele.focus();
+	        this.ele.blur();
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+		}
+    });
+
+	group.addItem({
+        ident: 'baidu.focusin()',
+        des: '元素获得焦点时，触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+			box.innerHTML = '<input type="text" value="name">';
+			baidu(box).focusin(handler);
+	        me.ele = baidu('input',box).get(0);
+        },
+        run: function(){
+	        this.ele.focus();
+	        this.ele.blur();
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+		}
+    });
+
+	group.addItem({
+        ident: 'jQuery.focusout()',
+        des: '元素失去焦点时，触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+			box.innerHTML = '<input type="text" value="name">';
+			$(box).focusout(handler);
+	        me.ele = $('input',box).get(0);
+        },
+        run: function(){
+	        this.ele.blur();
+	        this.ele.focus();
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+		}
+    });
+
+	group.addItem({
+        ident: 'baidu.focusout()',
+        des: '元素失去焦点时，触发事件',
+        interval: 50000,
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+			box.innerHTML = '<input type="text" value="name">';
+			baidu(box).focusout(handler);
+	        me.ele = baidu('input',box).get(0);
+        },
+        run: function(){
+	        this.ele.blur();
+	        this.ele.focus();
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+		}
+    });
     
     return group;
 });
