@@ -83,6 +83,7 @@ define(function(require, exports, module){
             baidu(document.body).scrollTop();
         }
     });
+
     group.addItem({
         ident: 'jQuery.width()',
         des: '取得宽度',
@@ -115,6 +116,47 @@ define(function(require, exports, module){
             ele = null;
         }
     });
+
+	group.addItem({
+        ident: 'jQuery.width()',
+        des: '设置宽度',
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+	        me.ele = $(box);
+        },
+        run: function(){
+	        this.ele.width('200px');
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+       }
+    });
+
+	group.addItem({
+        ident: 'baidu.width()',
+        des: '设置宽度',
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+	        me.ele = baidu(box);
+        },
+        run: function(){
+	        this.ele.width('200px');
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+       }
+    });
+
     group.addItem({
         ident: 'jQuery.height()',
         des: '取得高度',
@@ -146,6 +188,46 @@ define(function(require, exports, module){
             document.body.removeChild(ele);
             ele = null;
         }
+    });
+
+	group.addItem({
+        ident: 'jQuery.height()',
+        des: '设置高度',
+		onbeforestart: function(evt){
+	        var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+	        me.ele = $(box);
+        },
+        run: function(){
+	        this.ele.height('200px');
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+        }
+    });
+
+	group.addItem({
+        ident: 'baidu.height()',
+        des: '设置高度',
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+	        me.ele = baidu(box);
+        },
+        run: function(){
+	        this.ele.height('200px');
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+       }
     });
     
     group.addItem({

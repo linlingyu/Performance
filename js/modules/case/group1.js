@@ -102,6 +102,35 @@ define(function(require, exports, module){
             baidu('table td');
         }
     });
+
+	group.addItem({
+        ident: 'jQuery.size()',
+        des: '元素的个数',
+        onbeforestart: function(evt){
+	        var me = evt.target;
+	        me.ele = $('fieldset input');
+        },
+        run: function(){
+	        this.ele.size();
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+    group.addItem({
+        ident: 'baidu.size()',
+        des: '元素的个数',
+        onbeforestart: function(evt){
+            var me = evt.target;
+            me.ele = baidu('fieldset input');
+        },
+        run: function(){
+            this.ele.size();
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
     
     group.addItem({
         ident: 'jQuery.each()',
@@ -129,6 +158,36 @@ define(function(require, exports, module){
             ele = null;
         }
     });
-    
-    return group;
+
+	group.addItem({
+        ident: 'jQuery.get()',
+        des: 'GET 请求加载数据',
+        onbeforestart: function(evt){
+	        var me = evt.target;
+	        me.ele = $('fieldset input');
+        },
+        run: function(){
+	        this.ele.get(0);
+        },
+        onafterend: function(evt){
+            evt.target.ele = null;
+        }
+    });
+
+    group.addItem({
+        ident: 'baidu.get()',
+        des: 'GET 请求加载数据',
+        onbeforestart: function(evt){
+	        var me = evt.target;
+	        me.ele = baidu('fieldset input');
+        },
+        run: function(){
+	        this.ele.get(0);
+        },
+	    onafterend: function(evt){
+		    evt.target.ele = null;
+	    }
+    });
+
+	return group;
 });
