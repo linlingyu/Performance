@@ -67,7 +67,45 @@ define(function(require, exports, module){
             ele = null;
         }
     });
-    
+
+	group.addItem({
+        ident: 'jQuery.toggle()',
+        des: '显示或隐藏匹配的元素',
+		onbeforestart: function(evt){
+			var me = evt.target,
+				box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+	        me.ele = $(box);
+        },
+        run: function(){
+	        this.ele.toggle();
+        },
+
+        onafterend: function(evt){
+	        var me = evt.target;
+            document.body.removeChild(me.container);
+	        me.ele = null;
+        }
+    });
+    group.addItem({
+        ident: 'baidu.toggle()',
+        des: '显示或隐藏匹配的元素',
+	    onbeforestart: function(evt){
+		    var me = evt.target,
+                box = me.container = document.createElement('div');
+            document.body.appendChild(box);
+            me.ele = $(box);
+        },
+        run: function(){
+            this.ele.toggle();
+        },
+
+        onafterend: function(evt){
+            var me = evt.target;
+            document.body.removeChild(me.container);
+            me.ele = null;
+        }
+    });
     
     group.addItem({
         ident: 'jQuery.toggleClass()',

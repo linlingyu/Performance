@@ -91,7 +91,7 @@ define(function(require, exports, module){
             launch: function(val){
                 var me = this,
                     opts = me._options;
-                opts.run();
+	            opts.run.call(me);
             }
         });
     return Item;
